@@ -213,7 +213,19 @@ const EdgeInfoDrawer = ({
         mask={false}
         open={visible}
         style={{ position: 'absolute' }}
-        title={t('label.edge-information')}>
+        title={t('label.edge-information')}
+        onContextMenu={(e) =>
+            window.updatePopupContent(
+                {
+                  data: { component: 'EdgeInfoDrawer'},
+                  logs: {},
+                },
+                e.target
+            )
+        }
+        style={{ border: '2px solid black' }}
+
+      >
         {isLoading ? (
           <Loader />
         ) : (

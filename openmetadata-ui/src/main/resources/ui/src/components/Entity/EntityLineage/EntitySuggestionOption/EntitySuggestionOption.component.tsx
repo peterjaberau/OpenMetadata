@@ -64,7 +64,17 @@ const EntitySuggestionOption: FC<EntitySuggestionOptionProps> = ({
       type="text"
       onClick={() => {
         onSelectHandler?.(entity);
-      }}>
+      }}
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'EntitySuggestionOption' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}>
       <div className="d-flex items-center w-full overflow-hidden justify-between">
         <div className="d-flex items-center flex-1 overflow-hidden">
           {serviceIcon}

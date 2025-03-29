@@ -29,7 +29,18 @@ const TestSuiteSummaryWidget = ({
   }
 
   return (
-    <div className="d-flex justify-end">
+    <div
+      className="d-flex justify-end"
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'TestSuiteSummaryWidget' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}>
       <div
         className={classNames(`profiler-item green`, size)}
         data-testid="test-passed">

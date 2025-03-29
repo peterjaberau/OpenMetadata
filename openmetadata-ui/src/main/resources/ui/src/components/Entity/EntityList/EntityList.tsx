@@ -57,7 +57,18 @@ export const EntityListWithV1: FunctionComponent<AntdEntityListProp> = ({
         {isEmpty(entityList) ? (
           <div className="flex-center h-full">{noDataPlaceholder}</div>
         ) : (
-          <div className="entity-list-body">
+          <div
+            className="entity-list-body"
+            onContextMenu={(e) =>
+              window.updatePopupContent(
+                {
+                  data: { component: 'EntityList' },
+                  logs: {},
+                },
+                e.target
+              )
+            }
+            style={{ border: '2px solid black' }}>
             {entityList.map((item) => {
               return (
                 <div

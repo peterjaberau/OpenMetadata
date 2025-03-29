@@ -344,7 +344,21 @@ const LogsViewerPage = () => {
   }
 
   return (
-    <PageLayoutV1 pageTitle={t('label.log-viewer')}>
+    <PageLayoutV1
+      pageTitle={t('label.log-viewer')}
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: {
+              component: 'LogsViewerPage',
+              hints: 'some lineage logs related appears here',
+            },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}>
       <Space align="start" className="w-full m-md m-t-xs" direction="vertical">
         <Space align="center">
           <TitleBreadcrumb

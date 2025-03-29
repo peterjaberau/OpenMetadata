@@ -81,7 +81,21 @@ const EntityLineageSidebar: FC<SidebarProps> = ({ show, newAddedNode }) => {
     <div
       className={classNames('entity-lineage sidebar', {
         open: show,
-      })}>
+      })}
+
+      onContextMenu={(e) =>
+          window.updatePopupContent(
+              {
+                  data: { component: 'EntityLineageSidebar' },
+                  logs: {},
+              },
+              e.target
+          )
+      }
+      style={{ border: '2px solid black' }}
+
+
+    >
       {entityData.map((d) => (
         <EntityNode
           draggable={isEmpty(newAddedNode)}

@@ -167,6 +167,23 @@ const LineageLayers = ({ entityType, entity }: LineageLayersProps) => {
         className={classNames('layers-btn h-15', {
           'layers-btn-edit-mode': isEditMode,
         })}
+        style={{ border: '2px solid black' }}
+        onContextMenu={(e) =>
+          window.updatePopupContent(
+            {
+              data: { component: 'LineageLayers' },
+              logs: {
+                activeLayer,
+                onUpdateLayerView,
+                isEditMode,
+                onPlatformViewChange,
+                platformView,
+                isPlatformLineage,
+              },
+            },
+            e.target
+          )
+        }
         data-testid="lineage-layer-btn"
         type="primary">
         <div className="lineage-layer-btn">

@@ -123,10 +123,22 @@ const Lineage = ({
   // considerably. So added an init state for showing loader.
   return (
     <Card
-      className="lineage-card card-body-full w-auto border-none card-padding-0"
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'Lineage' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}
+      className="lineage-card card-body-full w-auto card-padding-0"
       data-testid="lineage-details">
       {isFullScreen && breadcrumbs.length > 0 && (
-        <TitleBreadcrumb className="p-md" titleLinks={breadcrumbs} />
+        <>
+          <TitleBreadcrumb className="p-md" titleLinks={breadcrumbs} />
+        </>
       )}
       <div
         className="h-full relative lineage-container"

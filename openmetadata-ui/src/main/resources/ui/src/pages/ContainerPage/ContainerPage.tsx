@@ -564,7 +564,18 @@ const ContainerPage = () => {
           onUpdate={handleContainerUpdate}>
           <Col span={24}>
             <Tabs
-              activeKey={tab}
+                onContextMenu={(e) =>
+                    window.updatePopupContent(
+                        {
+                          data: { component: 'ContainerPage', hints: 'has tab to edit lineage editLineagePermission' },
+                          logs: {},
+                        },
+                        e.target
+                    )
+                }
+                style={{ border: '2px solid black' }}
+
+                activeKey={tab}
               className="tabs-new"
               data-testid="tabs"
               items={tabs}

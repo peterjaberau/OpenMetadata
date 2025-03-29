@@ -99,9 +99,124 @@
     <link rel="manifest" href="/manifest.json" />
 
     <title>OpenMetadata</title>
+
+    <style>
+      /* Popup Style */
+      #popup {
+        display: none;
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+        z-index: 10000;
+      }
+      #popup button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* Highlight Style */
+      .highlight {
+        outline: 3px solid red !important;
+      }
+
+      .highlight-hover {
+        outline: 2px solid yellow !important;
+      }
+    </style>
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="inspect"></div>
     <div id="root"></div>
+
+    <!-- Popup Element -->
+    <div id="popup">
+      <div id="popup-content"></div>
+      <button onclick="closePopup()">Close</button>
+    </div>
+
+
+
+    <script>
+      // Global function to show and update content
+
+      let lastClickedElement = null;
+      let lastHoveredElement = null;
+      let debounceTimer = null;
+
+      window.updatePopupContent = (content, element) => {
+        event.preventDefault()
+        console.log('inspect', { content: content , target: element});
+
+        // Remove highlight from previously clicked element
+        if (lastClickedElement) {
+          lastClickedElement.classList.remove("highlight");
+        }
+
+        // Set the new clicked element
+        lastClickedElement = element;
+        if (lastClickedElement) {
+          lastClickedElement.classList.add("highlight"); // Highlight the clicked element
+        }
+
+
+
+        const popup = document.getElementById('popup');
+        const popupContent = document.getElementById('popup-content');
+        popupContent.innerHTML = typeof content.data === 'string' ? content.data : JSON.stringify(content.data, null, 2);
+        popup.style.display = 'block';
+      }
+
+      // Close popup function
+      function closePopup() {
+
+        // Remove highlight when closing
+        if (lastClickedElement) {
+          lastClickedElement.classList.remove("highlight");
+          lastClickedElement = null;
+        }
+        // Hide popup
+        document.getElementById('popup').style.display = 'none';
+      }
+
+
+      document.addEventListener('mousemove', (event) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          let hoveredElement = document.elementFromPoint(event.clientX, event.clientY);
+
+          if (!hoveredElement) return;
+
+          // Remove previous highlight
+          if (lastHoveredElement && lastHoveredElement !== hoveredElement) {
+            lastHoveredElement.classList.remove("highlight-hover");
+          }
+
+          // Highlight new element
+          lastHoveredElement = hoveredElement;
+          lastHoveredElement.classList.add("highlight-hover");
+        }, 50); // Debounce delay
+      });
+
+      // Remove highlight when the mouse leaves the document
+      document.addEventListener("mouseleave", () => {
+        if (lastHoveredElement) {
+          lastHoveredElement.classList.remove("highlight-hover");
+          lastHoveredElement = null;
+        }
+      });
+
+    </script>
   </body>
 </html>

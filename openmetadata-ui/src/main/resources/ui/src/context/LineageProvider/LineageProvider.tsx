@@ -1576,7 +1576,17 @@ const LineageProvider = ({ children }: LineageProviderProps) => {
       <div
         className={classNames('lineage-root', {
           'full-screen-lineage': isFullScreen,
-        })}>
+        })}
+        onContextMenu={(e) =>
+          window.updatePopupContent(
+            {
+              data: { component: 'LineageProvider' },
+              logs: {},
+            },
+            e.target
+          )
+        }
+        style={{ border: '2px solid black' }}>
         {children}
         <EntityLineageSidebar newAddedNode={newAddedNode} show={isEditMode} />
 

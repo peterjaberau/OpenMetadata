@@ -43,7 +43,21 @@ const LoadMoreNode = (props: NodeProps) => {
   const { node } = data;
 
   return (
-    <div className="load-more-node w-76" data-testid="node-label">
+    <div className="load-more-node w-76" data-testid="node-label"
+         onContextMenu={(e) =>
+             window.updatePopupContent(
+                 {
+                     data: { component: 'LoadMoreNode' },
+                     logs: {},
+                 },
+                 e.target
+             )
+         }
+         style={{ border: '2px solid black' }}
+
+
+
+    >
       {getHandle(false)}
       {node.displayName ?? node.name}
     </div>

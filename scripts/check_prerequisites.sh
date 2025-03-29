@@ -25,7 +25,7 @@ set -e
 declare -A python
 python["name"]="Python"
 python["version_command"]="python --version 2>&1 | awk '{print \$2}'"
-python["required_version"]="3.9 3.10 3.11"
+python["required_version"]="3.9 3.10 3.11 3.12"
 
 declare -A docker
 docker["name"]="Docker"
@@ -40,7 +40,7 @@ maven["required_version"]="3.6 3.7 3.8 3.9"
 declare -A java
 java["name"]="Java"
 java["version_command"]="java -version 2>&1 | awk -F'\"' '/version/ {print \$2}'"
-java["required_version"]="11 16 17"
+java["required_version"]="11 16 17 22"
 
 declare -A jq
 jq["name"]="jq"

@@ -24,6 +24,16 @@ const LineageNodeRemoveButton = ({
 }: LineageNodeRemoveButtonProps) => {
   return (
     <Button
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'LineageRemoveButton' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}
       className="lineage-node-remove-btn bg-body-hover"
       data-testid="lineage-node-remove-btn"
       icon={

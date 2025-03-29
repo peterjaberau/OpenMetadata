@@ -115,7 +115,18 @@ export const getDashboardDataModelDetailPageTabs = ({
     {
       label: (
         <TabsLabel
-          data-testid={EntityTabs.LINEAGE}
+            onContextMenu={(e) =>
+                window.updatePopupContent(
+                    {
+                      data: { component: 'DashboardDataModelUtils', hints: 'tab label to Lineage component' },
+                      logs: {},
+                    },
+                    e.target
+                )
+            }
+            style={{ border: '2px solid black' }}
+
+            data-testid={EntityTabs.LINEAGE}
           id={EntityTabs.LINEAGE}
           name={labelMap?.[EntityTabs.LINEAGE] ?? i18n.t('label.lineage')}
         />

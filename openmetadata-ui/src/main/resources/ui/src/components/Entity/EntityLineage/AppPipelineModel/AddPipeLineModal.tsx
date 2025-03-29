@@ -148,7 +148,20 @@ const AddPipeLineModal = ({
       title={t(`label.${isUndefined(selectedEdge) ? 'add' : 'edit'}-entity`, {
         entity: t('label.edge'),
       })}
-      onCancel={onModalCancel}>
+      onCancel={onModalCancel}
+      onContextMenu={(e) =>
+          window.updatePopupContent(
+              {
+                data: { component: 'AddPipeLineModal' },
+                logs: {},
+              },
+              e.target
+          )
+      }
+      style={{ border: '2px solid black' }}
+
+
+    >
       <Input
         data-testid="field-input"
         placeholder={t('message.search-for-edge')}

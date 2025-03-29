@@ -23,7 +23,7 @@ import {
 } from '@ant-design/icons';
 import { Button } from 'antd';
 import classNames from 'classnames';
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC, useCallback, useMemo, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as EditIcon } from '../../../../assets/svg/edit-new.svg';
 import { ReactComponent as ExportIcon } from '../../../../assets/svg/ic-export.svg';
@@ -100,7 +100,33 @@ const LineageControlButtons: FC<LineageControlButtonsProps> = ({
 
   return (
     <>
-      <div className="lineage-control-buttons">
+      <div
+        style={{ border: '2px solid black' }}
+        onContextMenu={(e) =>
+          window.updatePopupContent(
+            {
+              data: { component: 'LineageControlButtons' },
+              logs: {
+                isColumnLayerActive,
+                activeLayer,
+                isEditMode,
+                expandAllColumns,
+                lineageConfig,
+                platformView,
+                toggleColumnView,
+                onExportClick,
+                loading,
+                status,
+                onLineageEditClick,
+                onLineageConfigUpdate,
+                reactFlowInstance,
+                redraw,
+              },
+            },
+            e.target
+          )
+        }
+        className="lineage-control-buttons">
         {!deleted &&
           platformView === LineagePlatformView.None &&
           entityType &&

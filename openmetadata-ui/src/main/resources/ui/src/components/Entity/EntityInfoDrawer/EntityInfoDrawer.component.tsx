@@ -109,11 +109,25 @@ const EntityInfoDrawer = ({
             />
           </Col>
         </Row>
-      }>
+      }
+      onContextMenu={(e) =>
+          window.updatePopupContent(
+              {
+                data: { component: 'EntityInfoDrawer' },
+                logs: {},
+              },
+              e.target
+          )
+      }
+      style={{ border: '2px solid black' }}
+
+
+    >
       <DataAssetSummaryPanel
         dataAsset={entityDetail}
         entityType={selectedNode.entityType as EntityType}
       />
+
     </Drawer>
   );
 };

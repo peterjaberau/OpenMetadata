@@ -145,7 +145,20 @@ export const getColumnContent = (
       onClick={(e) => {
         e.stopPropagation();
         onColumnClick(fullyQualifiedName ?? '');
-      }}>
+      }}
+      onContextMenu={(e) =>
+          window.updatePopupContent(
+              {
+                  data: { component: 'CustomNode.utils' },
+                  logs: {},
+              },
+              e.target
+          )
+      }
+      style={{ border: '2px solid black' }}
+
+
+    >
       {getColumnHandle(
         EntityLineageNodeType.DEFAULT,
         isConnectable,

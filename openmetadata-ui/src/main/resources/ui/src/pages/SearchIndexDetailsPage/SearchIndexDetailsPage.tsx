@@ -555,6 +555,20 @@ function SearchIndexDetailsPage() {
           onUpdate={onSearchIndexUpdate}>
           <Col span={24}>
             <Tabs
+              onContextMenu={(e) =>
+                window.updatePopupContent(
+                  {
+                    data: {
+                      component: 'SearchIndexDetailsPage',
+
+                      hints: 'has htab to edit lineage related permissions',
+                    },
+                    logs: {},
+                  },
+                  e.target
+                )
+              }
+              style={{ border: '2px solid black' }}
               activeKey={activeTab}
               className="tabs-new"
               data-testid="tabs"

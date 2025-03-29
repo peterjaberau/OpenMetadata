@@ -138,6 +138,16 @@ const LineageSearchSelect = () => {
       })}
       popupClassName="lineage-search-options-list"
       onChange={onOptionSelect}
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'LineageSearchSelect' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}
     />
   );
 };

@@ -286,7 +286,39 @@ const NodeChildren = ({ node, isConnectable }: NodeChildrenProps) => {
 
   if (supportsColumns && (showColumns || showDataObservability)) {
     return (
-      <div className="column-container">
+      <div
+        className="column-container"
+        style={{ border: '2px solid black' }}
+        onContextMenu={(e) =>
+          window.updatePopupContent(
+            {
+              data: { component: 'NodeChildren' },
+              logs: {
+                useLineageProvider: {
+                  tracedColumns,
+                  activeLayer,
+                  onColumnClick,
+                  columnsHavingLineage,
+                  isEditMode,
+                  expandAllColumns,
+                },
+                node: {
+                  entityType,
+                },
+                children,
+                childrenHeading,
+                supportsColumns,
+                summary,
+                isExpanded,
+                showAllColumns,
+                filteredColumns,
+                searchValue,
+                showDataObservability,
+              },
+            },
+            e.target
+          )
+        }>
         <div className="d-flex justify-between items-center">
           <div>
             {showColumns && (

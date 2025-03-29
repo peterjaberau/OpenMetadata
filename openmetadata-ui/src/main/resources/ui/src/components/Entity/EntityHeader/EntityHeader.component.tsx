@@ -52,7 +52,18 @@ export const EntityHeader = ({
   showName = true,
 }: Props) => {
   return (
-    <div className="w-full">
+    <div
+      className="w-full"
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'EntityHeader' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}>
       <div
         className={classNames(
           'entity-breadcrumb',

@@ -558,7 +558,18 @@ const StoredProcedurePage = () => {
           {/* Entity Tabs */}
           <Col span={24}>
             <Tabs
-              activeKey={activeTab}
+                onContextMenu={(e) =>
+                    window.updatePopupContent(
+                        {
+                          data: { component: 'StoredProcedurePage', hints: 'has tab to edit lineage related permissions' },
+                          logs: {},
+                        },
+                        e.target
+                    )
+                }
+                style={{ border: '2px solid black' }}
+
+                activeKey={activeTab}
               className="tabs-new"
               data-testid="tabs"
               items={tabs}

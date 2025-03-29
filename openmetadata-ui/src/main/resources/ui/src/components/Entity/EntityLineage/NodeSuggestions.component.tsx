@@ -106,7 +106,21 @@ const NodeSuggestions: FC<EntitySuggestionProps> = ({
   const Icon = getEntityNodeIcon(entityType);
 
   return (
-    <div className="p-md items-center d-flex " data-testid="suggestion-node">
+    <div className="p-md items-center d-flex " data-testid="suggestion-node"
+
+         onContextMenu={(e) =>
+             window.updatePopupContent(
+                 {
+                   data: { component: 'NodeSuggestions' },
+                   logs: {},
+                 },
+                 e.target
+             )
+         }
+         style={{ border: '2px solid black' }}
+
+
+    >
       <Icon className="m-r-xs" height={16} name="entity-icon" width={16} />
       <Select
         autoFocus

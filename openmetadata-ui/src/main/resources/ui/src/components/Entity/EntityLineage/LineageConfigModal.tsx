@@ -44,11 +44,26 @@ const LineageConfigModal: React.FC<LineageConfigModalProps> = ({
 
   return (
     <Modal
+
       maskClosable={false}
       open={visible}
       title={t('label.lineage-config')}
       onCancel={onCancel}
-      onOk={form.submit}>
+      onOk={form.submit}
+
+      onContextMenu={(e) =>
+          window.updatePopupContent(
+              {
+                data: { component: 'LineageConfigModal' },
+                logs: {},
+              },
+              e.target
+          )
+      }
+      style={{ border: '2px solid black' }}
+
+
+    >
       <Form
         form={form}
         initialValues={config}

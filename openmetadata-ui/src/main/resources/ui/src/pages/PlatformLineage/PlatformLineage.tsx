@@ -164,7 +164,18 @@ const PlatformLineage = () => {
   }, [selectedEntity, loading, permissions, entityType]);
 
   return (
-    <PageLayoutV1 pageTitle={t('label.lineage')}>
+    <PageLayoutV1
+      pageTitle={t('label.lineage')}
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'PlatformLineage' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}>
       <Row gutter={[0, 16]}>
         <Col span={24}>
           <Row className="">

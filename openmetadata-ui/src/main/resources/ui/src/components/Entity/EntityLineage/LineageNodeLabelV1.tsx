@@ -83,7 +83,21 @@ const LineageNodeLabelV1 = ({ node }: Pick<LineageNodeLabelProps, 'node'>) => {
   const breadcrumbs = getBreadcrumbsFromFqn(node.fullyQualifiedName ?? '');
 
   return (
-    <div className="custom-node-label-container">
+    <div className="custom-node-label-container"
+
+         onContextMenu={(e) =>
+             window.updatePopupContent(
+                 {
+                   data: { component: 'LineageNodeLabelV1' },
+                   logs: {},
+                 },
+                 e.target
+             )
+         }
+         style={{ border: '2px solid black' }}
+
+
+    >
       <div className="w-full m-0 p-x-md p-y-xs">
         {breadcrumbs.length > 0 && (
           <div className="d-flex gap-2 items-center m-b-xs lineage-breadcrumb">

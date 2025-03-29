@@ -253,7 +253,19 @@ export const EntityExportModalProvider = ({
             }}
             okText={t('label.export')}
             title={exportData.title ?? t('label.export')}
-            onCancel={handleCancel}>
+            onCancel={handleCancel}
+            onContextMenu={(e) =>
+                window.updatePopupContent(
+                    {
+                      data: { component: 'EntityExportModalProvider', hints: 'not isTourRoute' },
+                      logs: {},
+                    },
+                    e.target
+                )
+            }
+            style={{ border: '2px solid black' }}
+
+          >
             <Form
               form={form}
               id="export-form"

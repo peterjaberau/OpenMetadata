@@ -72,7 +72,19 @@ const EntityRightPanel = <T extends ExtentionEntitiesKeys>({
   return (
     <>
       {beforeSlot}
-      <Space className="w-full" direction="vertical" size="large">
+      <Space className="w-full" direction="vertical" size="large"
+             onContextMenu={(e) =>
+                 window.updatePopupContent(
+                     {
+                       data: { component: 'EntityRightPanel' },
+                       logs: {},
+                     },
+                     e.target
+                 )
+             }
+             style={{ border: '2px solid black' }}
+
+      >
         {showDataProductContainer && (
           <DataProductsContainer
             activeDomain={domain}

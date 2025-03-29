@@ -145,8 +145,17 @@ const CustomControls: FC<ControlProps> = ({
     <Row
       className={classNames('z-10 w-full', className)}
       gutter={[8, 8]}
-      style={style}>
-      <Col flex="auto">
+      style={style}
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'CustomControls' },
+            logs: {},
+          },
+          e.target
+        )
+      }>
+      <Col flex="auto" style={{ border: '2px solid black' }}>
         <LineageSearchSelect />
         <Space className="m-l-xs" size={16}>
           <Dropdown

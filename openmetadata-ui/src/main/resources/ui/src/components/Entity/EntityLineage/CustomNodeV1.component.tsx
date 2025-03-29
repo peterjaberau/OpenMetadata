@@ -246,7 +246,17 @@ const CustomNodeV1 = (props: NodeProps) => {
         },
         { 'custom-node-header-tracing': isTraced }
       )}
-      data-testid={`lineage-node-${fullyQualifiedName}`}>
+      data-testid={`lineage-node-${fullyQualifiedName}`}
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'CustomNodeV1' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}>
       {getHandle()}
       <div className="lineage-node-content">
         <div className="label-container bg-white">{nodeLabel}</div>

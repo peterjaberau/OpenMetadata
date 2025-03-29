@@ -85,7 +85,17 @@ const EntityHeaderTitle = ({
       className={classNames('entity-header-title', className)}
       data-testid={`${serviceName}-${name}`}
       gutter={12}
-      wrap={false}>
+      wrap={false}
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'EntityHeaderTitle' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}>
       {icon && <Col className="flex-center">{icon}</Col>}
       <Col
         className={`d-flex flex-col gap-2 ${

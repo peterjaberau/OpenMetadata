@@ -349,7 +349,17 @@ export const CustomEdge = ({
   }, [edge, isColumnLineage, sourceHandle, targetHandle]);
 
   return (
-    <Fragment>
+    <Fragment
+      onContextMenu={(e) =>
+        window.updatePopupContent(
+          {
+            data: { component: 'CustomEdge' },
+            logs: {},
+          },
+          e.target
+        )
+      }
+      style={{ border: '2px solid black' }}>
       <path
         className="react-flow__edge-path"
         d={edgePath}
