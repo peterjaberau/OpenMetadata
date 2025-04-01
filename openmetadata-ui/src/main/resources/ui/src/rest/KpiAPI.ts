@@ -31,6 +31,13 @@ export const getListKPIs = async (params?: ListParams) => {
   const response = await APIClient.get<PagingResponse<Kpi[]>>('/kpi', {
     params,
   });
+  console.log('getListKPIs', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -56,6 +63,13 @@ export const getKPIByName = async (fqn: string, params?: ListParams) => {
   const response = await APIClient.get<Kpi>(`/kpi/name/${getEncodedFqn(fqn)}`, {
     params,
   });
+  console.log('getKPIByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -76,6 +90,13 @@ export const getLatestKpiResult = async (fqn: string) => {
   const response = await APIClient.get<KpiResult>(
     `/kpi/${getEncodedFqn(fqn)}/latestKpiResult`
   );
+  console.log('getListKpiResult', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

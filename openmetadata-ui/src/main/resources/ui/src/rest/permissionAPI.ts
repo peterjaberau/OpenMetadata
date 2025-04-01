@@ -25,6 +25,13 @@ export const getLoggedInUserPermissions = async () => {
     data: ResourcePermission[];
     paging: Paging;
   }>('/permissions', { params });
+  console.log('getLoggedInUserPermissions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -46,6 +53,13 @@ export const getEntityPermissionByFqn = async (
   const response = await APIClient.get<ResourcePermission>(
     `/permissions/${resource}/name/${getEncodedFqn(entityFqn)}`
   );
+  console.log('getEntityPermissionById', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -54,6 +68,13 @@ export const getResourcePermission = async (resource: ResourceEntity) => {
   const response = await APIClient.get<ResourcePermission>(
     `/permissions/${resource}`
   );
+  console.log('getResourcePermission', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

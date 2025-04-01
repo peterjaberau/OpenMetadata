@@ -59,6 +59,14 @@ export const getDataProductByName = async (
     }
   );
 
+  console.log('getDataProductByName', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return response.data;
 };
 
@@ -69,6 +77,13 @@ export const deleteDataProduct = (id: string) => {
 export const getDataProductVersionsList = async (id: string) => {
   const url = `${BASE_URL}/${id}/versions`;
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getDataProductVersionsList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -79,6 +94,13 @@ export const getDataProductVersionData = async (
 ) => {
   const url = `${BASE_URL}/${id}/versions/${version}`;
   const response = await APIClient.get<DataProduct>(url);
+  console.log('getDataProductVersionData', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -100,6 +122,13 @@ export const fetchDataProductsElasticSearch = async (
     pageSize: PAGE_SIZE,
     queryFilter: {},
     searchIndex: SearchIndex.DATA_PRODUCT,
+  });
+  console.log('fetchDataProductsElasticSearch', {
+    request: {
+
+    },
+    response: response,
+    data: {}
   });
 
   return {
@@ -141,6 +170,17 @@ export const removeAssetsFromDataProduct = async (
     { assets: EntityReference[] },
     AxiosResponse<DataProduct>
   >(`/dataProducts/${getEncodedFqn(dataProductFqn)}/assets/remove`, data);
+
+
+  console.log('removeAssetsFromDataProduct', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
+
 
   return response.data;
 };

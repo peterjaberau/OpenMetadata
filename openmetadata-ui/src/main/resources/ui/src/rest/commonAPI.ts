@@ -24,5 +24,13 @@ export const getRepositoryData = async () => {
     'https://api.github.com/repos/open-metadata/OpenMetadata'
   );
 
+  console.log('getRepositoryData', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return response.data as RepositoryData;
 };

@@ -47,6 +47,13 @@ export const getRoles = async (
     '/roles',
     { params }
   );
+  console.log('getRoles', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -68,6 +75,13 @@ export const getPolicies = async (
     '/policies',
     { params }
   );
+  console.log('getPolicies', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -79,6 +93,13 @@ export const getRoleByName = async (name: string, fields: string) => {
       params: { fields },
     }
   );
+  console.log('getRoleByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -90,6 +111,13 @@ export const getPolicyByName = async (name: string, fields: string) => {
       params: { fields },
     }
   );
+  console.log('getPolicyByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -137,6 +165,13 @@ export const getPolicyResources = async () => {
     data: ResourceDescriptor[];
     paging: Paging;
   }>('/policies/resources');
+  console.log('getPolicyResources', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -145,6 +180,13 @@ export const getPolicyFunctions = async () => {
   const response = await APIClient.get<{ data: Function[]; paging: Paging }>(
     '/policies/functions'
   );
+  console.log('getPolicyFunctions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

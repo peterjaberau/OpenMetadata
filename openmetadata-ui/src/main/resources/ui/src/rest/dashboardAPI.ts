@@ -44,6 +44,13 @@ export const getDashboardVersions = async (id: string) => {
   const url = `${BASE_URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getDashboardVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -51,6 +58,13 @@ export const getDashboardVersion = async (id: string, version: string) => {
   const url = `${BASE_URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get<Dashboard>(url);
+  console.log('getDashboardVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -85,6 +99,14 @@ export const getDashboardByFqn = async (fqn: string, params?: ListParams) => {
       params: { ...params, include: params?.include ?? Include.All },
     }
   );
+
+  console.log('getDashboardByFqn', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -140,7 +162,13 @@ export const getDataModels = async (params?: ListDataModelParams) => {
       params,
     }
   );
+  console.log('getDataModels', {
+    request: {
 
+    },
+    response: response,
+    data: {}
+  });
   return response.data;
 };
 

@@ -33,6 +33,13 @@ export const getAggregateChartData = async (params: ChartAggregateParam) => {
       params,
     }
   );
+  console.log('getAggregateChartData', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -47,6 +54,13 @@ export const getChartPreviewByName = async (
       params,
     }
   );
+  console.log('getChartPreviewByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -62,6 +76,13 @@ export const getMultiChartsPreviewByName = async (
       chartNames,
       ...params,
     },
+  });
+  console.log('getMultiChartsPreviewByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
   });
 
   return response.data;

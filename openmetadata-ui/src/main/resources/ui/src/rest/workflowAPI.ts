@@ -32,6 +32,11 @@ export const getTestConnectionDefinitionByName = async (
       testDefinitionName
     )}`
   );
+  console.log('getTestConnectionDefinitionByName', {
+    request: {},
+    response: response,
+    data: {},
+  });
 
   return response.data;
 };
@@ -45,6 +50,11 @@ export const addWorkflow = async (
     AxiosResponse<Workflow>
   >(`automations/workflows`, data, {
     signal: apiCancelSignal,
+  });
+  console.log('addWorkflow', {
+    request: {},
+    response: response,
+    data: {},
   });
 
   return response.data;
@@ -69,6 +79,11 @@ export const triggerWorkflowById = async (
       },
     }
   );
+  console.log('triggerWorkflowById', {
+    request: {},
+    response: response,
+    data: {},
+  });
 
   return response.status;
 };
@@ -83,6 +98,11 @@ export const getWorkflowById = async (
       signal: apiCancelSignal,
     }
   );
+  console.log('getWorkflowById', {
+    request: {},
+    response: response,
+    data: {},
+  });
 
   return response.data;
 };
@@ -95,6 +115,11 @@ export const deleteWorkflowById = async (
     `/automations/workflows/${workflowId}`,
     { params: { hardDelete } }
   );
+  console.log('deleteWorkflowById', {
+    request: {},
+    response: response,
+    data: {},
+  });
 
   return response.data;
 };
@@ -108,6 +133,11 @@ export const getWorkflowInstancesForApplication = async (
       params,
     }
   );
+  console.log('getWorkflowInstancesForApplication', {
+    request: {},
+    response: response,
+    data: {},
+  });
 
   return response.data;
 };
@@ -123,6 +153,11 @@ export const getWorkflowInstanceStateById = async (
       params,
     }
   );
+  console.log('getWorkflowInstanceStateById', {
+    request: {},
+    response: response,
+    data: {},
+  });
 
   return response.data;
 };

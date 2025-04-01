@@ -20,6 +20,7 @@ import { Paging } from '../generated/type/paging';
 import { getEncodedFqn } from '../utils/StringsUtils';
 import APIClient from './index';
 import { CustomPropertiesForAssets } from './metadataTypeAPI.interface';
+import {fetchOMStatus} from "./miscAPI";
 
 export type FieldData = {
   name: string;
@@ -35,6 +36,15 @@ export const getTypeListByCategory = async (category: Category) => {
     params,
   });
 
+  console.log('getTypeListByCategory', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
+
   return response.data;
 };
 
@@ -44,7 +54,13 @@ export const getTypeByFQN = async (typeFQN: string) => {
   const params = { fields: TabSpecificField.CUSTOM_PROPERTIES };
 
   const response = await APIClient.get<Type>(path, { params });
+  console.log('getTypeByFQN', {
+    request: {
 
+    },
+    response: response,
+    data: response.data
+  });
   return response.data;
 };
 
@@ -52,6 +68,14 @@ export const getAllCustomProperties = async () => {
   const path = `/metadata/types/customProperties`;
   const response = await APIClient.get<CustomPropertiesForAssets>(path);
 
+
+  console.log('getAllCustomProperties', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
   return response.data;
 };
 
@@ -76,6 +100,15 @@ export const updateType = async (entityTypeId: string, data: Operation[]) => {
     path,
     data
   );
+
+
+  console.log('updateType', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };

@@ -25,6 +25,7 @@ import { CustomizablePage } from '../../pages/CustomizablePage/CustomizablePage'
 import DataQualityPage from '../../pages/DataQuality/DataQualityPage';
 import ForbiddenPage from '../../pages/ForbiddenPage/ForbiddenPage';
 import PlatformLineage from '../../pages/PlatformLineage/PlatformLineage';
+import PlatformLineageCustom from '../../pages/PlatformLineage-custom/PlatformLineageCustom';
 import TagPage from '../../pages/TagPage/TagPage';
 import { checkPermission, userPermissions } from '../../utils/PermissionsUtils';
 import AdminProtectedRoute from './AdminProtectedRoute';
@@ -289,6 +290,14 @@ const AuthenticatedAppRouter: FunctionComponent = () => {
         exact
         component={PlatformLineage}
         path={[ROUTES.PLATFORM_LINEAGE, ROUTES.PLATFORM_LINEAGE_WITH_FQN]}
+      />
+      <Route
+        exact
+        component={PlatformLineageCustom}
+        path={[
+          ROUTES.PLATFORM_LINEAGE_CUSTOM,
+          ROUTES.PLATFORM_LINEAGE_CUSTOM_WITH_FQN,
+        ]}
       />
       <Route component={ExplorePageV1} path={ROUTES.EXPLORE_WITH_TAB} />
       <Route

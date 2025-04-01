@@ -40,6 +40,11 @@ export const getTags = async ({ limit = 10, ...params }: TagsRequestParams) => {
   const response = await APIClient.get<PagingResponse<Tag[]>>('/tags', {
     params: { ...params, limit },
   });
+  console.log('getTags', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -54,6 +59,11 @@ export const getAllClassifications = async (params?: ListParams) => {
       },
     }
   );
+  console.log('getAllClassifications', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -72,6 +82,11 @@ export const addAssetsToTags = async (
     AddTagToAssetsRequest,
     AxiosResponse<CSVExportResponse>
   >(`/tags/${tagId}/assets/add`, data);
+  console.log('addAssetsToTags', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -89,6 +104,11 @@ export const removeAssetsFromTags = async (
     AddTagToAssetsRequest,
     AxiosResponse<Tag>
   >(`/tags/${tagId}/assets/remove`, data);
+  console.log('removeAssetsFromTags', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -101,6 +121,11 @@ export const getClassificationByName = async (
     `${BASE_URL}/name/${getEncodedFqn(name)}`,
     { params }
   );
+  console.log('getClassificationByName', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -109,6 +134,11 @@ export const deleteClassification = async (classificationId: string) => {
   const response = await APIClient.delete<Classification>(
     `/classifications/${classificationId}?recursive=true&hardDelete=true`
   );
+  console.log('deleteClassification', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -118,6 +148,11 @@ export const createClassification = async (data: CreateClassification) => {
     CreateClassification,
     AxiosResponse<Classification>
   >(BASE_URL, data);
+  console.log('createClassification', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -127,6 +162,11 @@ export const patchClassification = async (id: string, data: Operation[]) => {
     Operation[],
     AxiosResponse<Classification>
   >(`${BASE_URL}/${id}`, data);
+  console.log('patchClassification', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -134,6 +174,11 @@ export const patchClassification = async (id: string, data: Operation[]) => {
 export const getTagByFqn = async (fqn: string, params?: ListParams) => {
   const response = await APIClient.get<Tag>(`tags/name/${fqn}`, {
     params,
+  });
+  console.log('getTagByFqn', {
+    request: {},
+    response: response,
+    data: response.data,
   });
 
   return response.data;
@@ -144,12 +189,22 @@ export const createTag = async (data: CreateTag) => {
     `/tags`,
     data
   );
+  console.log('createTag', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
 
 export const updateTag = async (data: Classification) => {
   const response = await APIClient.put(`/tags`, data);
+  console.log('updateTag', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -159,6 +214,11 @@ export const patchTag = async (id: string, data: Operation[]) => {
     `/tags/${id}`,
     data
   );
+  console.log('patchTag', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -172,6 +232,11 @@ export const deleteTag = async (tagId: string) => {
       hardDelete: true,
     },
   });
+  console.log('deleteTag', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -180,6 +245,11 @@ export const getClassificationVersionsList = async (id: string) => {
   const url = `${BASE_URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getClassificationVersionsList', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -191,6 +261,11 @@ export const getClassificationVersionData = async (
   const url = `${BASE_URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get<Classification>(url);
+  console.log('getClassificationVersionData', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };

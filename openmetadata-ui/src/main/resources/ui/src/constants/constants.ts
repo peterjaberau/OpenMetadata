@@ -128,6 +128,8 @@ export const ROUTES = {
   LOGOUT: '/logout',
   PLATFORM_LINEAGE: '/lineage',
   PLATFORM_LINEAGE_WITH_FQN: `/lineage/${PLACEHOLDER_ROUTE_ENTITY_TYPE}/${PLACEHOLDER_ROUTE_FQN}`,
+  PLATFORM_LINEAGE_CUSTOM: '/lineage-custom',
+  PLATFORM_LINEAGE_CUSTOM_WITH_FQN: `/lineage-custom/${PLACEHOLDER_ROUTE_ENTITY_TYPE}/${PLACEHOLDER_ROUTE_FQN}`,
   MY_DATA: '/my-data',
   TOUR: '/tour',
   REPORTS: '/reports',

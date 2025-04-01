@@ -43,6 +43,13 @@ export const getGlossariesList = async (params?: ListParams) => {
   const response = await APIClient.get<PagingResponse<Glossary[]>>(BASE_URL, {
     params,
   });
+  console.log('getGlossariesList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -74,6 +81,13 @@ export const getGlossariesByName = async (fqn: string, params?: ListParams) => {
       params,
     }
   );
+  console.log('getGlossariesByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -81,6 +95,13 @@ export const getGlossariesByName = async (fqn: string, params?: ListParams) => {
 export const getGlossariesById = async (id: string, params?: ListParams) => {
   const response = await APIClient.get<Glossary>(`/glossaries/${id}`, {
     params,
+  });
+  console.log('getGlossariesById', {
+    request: {
+
+    },
+    response: response,
+    data: {}
   });
 
   return response.data;
@@ -93,6 +114,13 @@ export const getGlossaryTerms = async (params: ListGlossaryTermsParams) => {
       params,
     }
   );
+  console.log('getGlossaryTerms', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -124,6 +152,13 @@ export const queryGlossaryTerms = async (glossaryName: string) => {
       getHierarchy: true,
     },
   });
+  console.log('queryGlossaryTerms', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return data;
 };
@@ -131,6 +166,13 @@ export const queryGlossaryTerms = async (glossaryName: string) => {
 export const getGlossaryTermsById = async (id: string, params?: ListParams) => {
   const response = await APIClient.get<GlossaryTerm>(`/glossaryTerms/${id}`, {
     params,
+  });
+  console.log('getGlossaryTermsById', {
+    request: {
+
+    },
+    response: response,
+    data: {}
   });
 
   return response.data;
@@ -141,6 +183,13 @@ export const getGlossaryTermByFQN = async (fqn = '', params?: ListParams) => {
     `/glossaryTerms/name/${getEncodedFqn(fqn)}`,
     { params }
   );
+  console.log('getGlossaryTermByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -208,6 +257,13 @@ export const getGlossaryVersionsList = async (id: string) => {
   const url = `/glossaries/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getGlossaryVersionsList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -215,6 +271,13 @@ export const getGlossaryVersionsList = async (id: string) => {
 export const getGlossaryVersion = async (id: string, version: string) => {
   const url = `/glossaries/${id}/versions/${version}`;
   const response = await APIClient.get<Glossary>(url);
+  console.log('getGlossaryVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -223,6 +286,13 @@ export const getGlossaryTermsVersionsList = async (id: string) => {
   const url = `/glossaryTerms/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getGlossaryTermsVersionsList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -231,6 +301,13 @@ export const getGlossaryTermsVersion = async (id: string, version: string) => {
   const url = `/glossaryTerms/${id}/versions/${version}`;
 
   const response = await APIClient.get<GlossaryTerm>(url);
+  console.log('getGlossaryTermsVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -326,6 +403,13 @@ export const searchGlossaryTerms = async (search: string, page = 1) => {
       getHierarchy: true,
     },
   });
+  console.log('searchGlossaryTerms', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return data;
 };
@@ -349,6 +433,13 @@ export const getFirstLevelGlossaryTerms = async (parentFQN: string) => {
       ],
       limit: 100000,
     },
+  });
+  console.log('getFirstLevelGlossaryTerms', {
+    request: {
+
+    },
+    response: response,
+    data: {}
   });
 
   return data;

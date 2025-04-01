@@ -30,6 +30,13 @@ export const getMetrics = async (params: ListParams) => {
       ...params,
     },
   });
+  console.log('getMetrics', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -44,6 +51,13 @@ export const getMetricByFqn = async (fqn: string, params?: ListParams) => {
       },
     }
   );
+  console.log('getMetricByFqn', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -53,6 +67,13 @@ export const patchMetric = async (id: string, data: Operation[]) => {
     `/metrics/${id}`,
     data
   );
+  console.log('patchMetric', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -62,6 +83,13 @@ export const restoreMetric = async (id: string) => {
     RestoreRequestType,
     AxiosResponse<Metric>
   >(`/metrics/restore`, { id });
+  console.log('restoreMetric', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -70,6 +98,13 @@ export const getMetricVersions = async (id: string) => {
   const response = await APIClient.get<EntityHistory>(
     `/metrics/${id}/versions`
   );
+  console.log('getMetricVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -78,6 +113,13 @@ export const getMetricVersion = async (id: string, versionId: string) => {
   const response = await APIClient.get<Metric>(
     `/metrics/${id}/versions/${versionId}`
   );
+  console.log('getMetricVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -87,6 +129,13 @@ export const updateMetricVote = async (id: string, data: VoteType) => {
     `/metrics/${id}/vote`,
     data
   );
+  console.log('updateMetricVote', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -98,6 +147,13 @@ export const addMetricFollower = async (id: string, userId: string) => {
       changeDescription: { fieldsAdded: { newValue: EntityReference[] }[] };
     }>
   >(`/metrics/${id}/followers`, userId, APPLICATION_JSON_CONTENT_TYPE_HEADER);
+  console.log('addMetricFollower', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -109,6 +165,13 @@ export const removeMetricFollower = async (id: string, userId: string) => {
       changeDescription: { fieldsDeleted: { oldValue: EntityReference[] }[] };
     }>
   >(`/metrics/${id}/followers/${userId}`, APPLICATION_JSON_CONTENT_TYPE_HEADER);
+  console.log('removeMetricFollower', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -118,6 +181,13 @@ export const createMetric = async (data: CreateMetric) => {
     '/metrics',
     data
   );
+  console.log('createMetric', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

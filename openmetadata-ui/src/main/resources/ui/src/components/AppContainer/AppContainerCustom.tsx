@@ -1,17 +1,6 @@
-/* eslint-disable i18next/no-literal-string */
-/*
- *  Copyright 2023 Collate.
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *  http://www.apache.org/licenses/LICENSE-2.0
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
+
 import { Layout } from 'antd';
+import classNames from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLimitStore } from '../../context/LimitsProvider/useLimitsStore';
 import { LineageSettings } from '../../generated/configuration/lineageSettings';
@@ -27,6 +16,9 @@ import {
   isTourRoute,
 } from '../../utils/AuthProvider.util';
 import { getOidcToken } from '../../utils/LocalStorageUtils';
+import { LimitBanner } from '../common/LimitBanner/LimitBanner';
+import LeftSidebar from '../MyData/LeftSidebar/LeftSidebar.component';
+import NavBar from '../NavBar/NavBar';
 import applicationsClassBase from '../Settings/Applications/AppDetails/ApplicationsClassBase';
 import { useApplicationsProvider } from '../Settings/Applications/ApplicationsProvider/ApplicationsProvider';
 import './app-container.less';
@@ -39,8 +31,10 @@ const AppContainer = () => {
   const { applications } = useApplicationsProvider();
   const AuthenticatedRouter = applicationRoutesClass.getRouteElements();
   const ApplicationExtras = applicationsClassBase.getApplicationExtension();
+  const { isAuthenticated } = useApplicationStore();
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(true);
 
-  const { setConfig } = useLimitStore();
+  const { setConfig, bannerDetails } = useLimitStore();
 
   const fetchAppConfigurations = useCallback(async () => {
     try {
@@ -59,11 +53,22 @@ const AppContainer = () => {
     }
   }, []);
 
+  const appendReserveRightSidebarClass = useCallback(() => {
+    const element = document.getElementsByTagName('body');
+    element[0].classList.add('reserve-right-sidebar');
+  }, []);
+
   useEffect(() => {
     if (currentUser?.id) {
       fetchAppConfigurations();
     }
   }, [currentUser?.id]);
+
+  useEffect(() => {
+    if (applicationsClassBase.isFloatingButtonPresent(applications)) {
+      appendReserveRightSidebarClass();
+    }
+  }, [applications]);
 
   useEffect(() => {
     const handleDocumentVisibilityChange = () => {
@@ -89,10 +94,31 @@ const AppContainer = () => {
 
   return (
     <Layout>
-      <Content>
-        <AuthenticatedRouter />
-        {ApplicationExtras && <ApplicationExtras />}
-      </Content>
+      <LimitBanner />
+      <Layout
+        className={classNames('app-container', {
+          ['extra-banner']: Boolean(bannerDetails),
+        })}>
+        {/* Render left side navigation */}
+        <LeftSidebar isSidebarCollapsed={isSidebarCollapsed} />
+
+        {/* Render main content */}
+        <Layout>
+          {/* Render Appbar */}
+          {isProtectedRoute(location.pathname) && isAuthenticated ? (
+            <NavBar
+              isSidebarCollapsed={isSidebarCollapsed}
+              toggleSideBar={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+            />
+          ) : null}
+
+          {/* Render main content */}
+          <Content>
+            <AuthenticatedRouter />
+            {ApplicationExtras && <ApplicationExtras />}
+          </Content>
+        </Layout>
+      </Layout>
     </Layout>
   );
 };

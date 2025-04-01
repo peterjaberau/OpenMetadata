@@ -33,6 +33,13 @@ export const getTeams = async (
       limit: params?.limit ?? 100000,
     },
   });
+  console.log('getTeams', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -46,6 +53,13 @@ export const getTeamsHierarchy = async (isJoinable = false) => {
       },
     }
   );
+  console.log('getTeamsHierarchy', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -57,6 +71,13 @@ export const getTeamByName = async (name: string, params?: ListParams) => {
       params,
     }
   );
+  console.log('getTeamByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

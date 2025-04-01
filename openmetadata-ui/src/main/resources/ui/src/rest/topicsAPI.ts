@@ -32,6 +32,13 @@ export const getTopicVersions = async (id: string) => {
   const url = `${BASE_URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getTopicVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -39,6 +46,13 @@ export const getTopicVersion = async (id: string, version: string) => {
   const url = `${BASE_URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get<Topic>(url);
+  console.log('getTopicVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -74,6 +88,13 @@ export const getTopicByFqn = async (fqn: string, params?: ListParams) => {
       },
     }
   );
+  console.log('getTopics', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -129,6 +150,13 @@ export const restoreTopic = async (id: string) => {
 
 export const getSampleDataByTopicId = async (id: string) => {
   const response = await APIClient.get<Topic>(`${BASE_URL}/${id}/sampleData`);
+  console.log('getSampleDataByTopicId', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

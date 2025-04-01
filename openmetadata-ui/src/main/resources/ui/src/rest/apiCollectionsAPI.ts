@@ -40,6 +40,14 @@ export const getApiCollections = async (params: GetApiCollectionsType) => {
     }
   );
 
+  console.log('getApiCollections', {
+    request: {
+      params,
+    },
+    response: response,
+    data: response.data,
+  });
+
   return response.data;
 };
 
@@ -56,6 +64,15 @@ export const getApiCollectionByFQN = async (
       },
     }
   );
+
+  console.log('getApiCollectionByFQN', {
+    request: {
+      params,
+      fqn,
+    },
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };

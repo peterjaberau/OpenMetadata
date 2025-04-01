@@ -136,6 +136,14 @@ export const getListTestCaseBySearch = async (
     }
   );
 
+  console.log('getListTestCaseBySearch', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return response.data;
 };
 
@@ -149,6 +157,14 @@ export const getListTestCaseResults = async (
     paging: Paging;
   }>(url, {
     params,
+  });
+
+  console.log('getListTestCaseResults', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
   });
 
   return response.data;
@@ -165,6 +181,15 @@ export const getTestCaseByFqn = async (
     }
   );
 
+  console.log('getTestCaseByFqn', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
+
   return response.data;
 };
 export const createTestCase = async (data: CreateTestCase) => {
@@ -172,6 +197,13 @@ export const createTestCase = async (data: CreateTestCase) => {
     CreateTestCase,
     AxiosResponse<TestCase>
   >(testCaseUrl, data);
+  console.log('createTestCase', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -181,6 +213,13 @@ export const updateTestCaseById = async (id: string, data: Operation[]) => {
     `${testCaseUrl}/${id}`,
     data
   );
+  console.log('updateTestCaseById', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -190,6 +229,13 @@ export const getTestCaseExecutionSummary = async (testSuiteId?: string) => {
     `${testSuiteUrl}/executionSummary`,
     { params: { testSuiteId } }
   );
+  console.log('getTestCaseExecutionSummary', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -201,6 +247,13 @@ export const addTestCaseToLogicalTestSuite = async (
     AddTestCaseToLogicalTestSuiteType,
     AxiosResponse<TestSuite>
   >(`${testCaseUrl}/logicalTestCases`, data);
+  console.log('addTestCaseToLogicalTestSuite', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -213,6 +266,13 @@ export const removeTestCaseFromTestSuite = async (
     AddTestCaseToLogicalTestSuiteType,
     AxiosResponse<TestCase>
   >(`${testCaseUrl}/logicalTestCases/${testSuiteId}/${testCaseId}`);
+  console.log('removeTestCaseFromTestSuite', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -227,6 +287,13 @@ export const getListTestDefinitions = async (
   }>(testDefinitionUrl, {
     params,
   });
+  console.log('getListTestDefinitions', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -240,6 +307,13 @@ export const getTestDefinitionById = async (
       params,
     }
   );
+  console.log('getTestDefinitionById', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -251,6 +325,13 @@ export const getListTestSuites = async (params?: ListTestSuitePrams) => {
     paging: Paging;
   }>(testSuiteUrl, {
     params,
+  });
+  console.log('getListTestSuites', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
   });
 
   return response.data;
@@ -265,6 +346,13 @@ export const getListTestSuitesBySearch = async (
       params,
     }
   );
+  console.log('getListTestSuitesBySearch', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -274,6 +362,13 @@ export const createTestSuites = async (data: CreateTestSuite) => {
     CreateTestSuite,
     AxiosResponse<TestSuite>
   >(testSuiteUrl, data);
+  console.log('createTestSuites', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -283,6 +378,13 @@ export const createExecutableTestSuite = async (data: CreateTestSuite) => {
     CreateTestSuite,
     AxiosResponse<TestSuite>
   >(`${testSuiteUrl}/basic`, data);
+  console.log('createExecutableTestSuite', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -295,6 +397,13 @@ export const getTestSuiteByName = async (
     `${testSuiteUrl}/name/${getEncodedFqn(name)}`,
     { params }
   );
+  console.log('getTestSuiteByName', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -304,6 +413,13 @@ export const updateTestSuiteById = async (id: string, data: Operation[]) => {
     `${testSuiteUrl}/${id}`,
     data
   );
+  console.log('updateTestSuiteById', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -315,6 +431,13 @@ export const getDataQualityReport = async (
     `${testSuiteUrl}/dataQualityReport`,
     { params }
   );
+  console.log('getDataQualityReport', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };

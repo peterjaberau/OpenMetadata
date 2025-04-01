@@ -32,6 +32,12 @@ export const getSuggestionsList = async (params?: ListSuggestionsParams) => {
     params,
   });
 
+  console.log('getSuggestionsList', {
+    request: {},
+    response: response,
+    data: {},
+  });
+
   return response.data;
 };
 

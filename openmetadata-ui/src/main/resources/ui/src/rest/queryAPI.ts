@@ -32,12 +32,26 @@ export const getQueriesList = async (params?: ListQueriesParams) => {
   const response = await APIClient.get<PagingResponse<Query[]>>(BASE_URL, {
     params,
   });
+  console.log('getQueriesList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
 export const getQueryById = async (id: string, params?: QueryByIdParams) => {
   const response = await APIClient.get<Query>(`${BASE_URL}/${id}`, {
     params,
+  });
+  console.log('getQueryById', {
+    request: {
+
+    },
+    response: response,
+    data: {}
   });
 
   return response.data;

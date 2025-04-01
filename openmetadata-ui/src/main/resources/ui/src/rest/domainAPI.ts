@@ -59,6 +59,15 @@ export const getDomainByName = async (fqn: string, params?: ListParams) => {
     }
   );
 
+  console.log('getDomainByName', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
+
   return response.data;
 };
 

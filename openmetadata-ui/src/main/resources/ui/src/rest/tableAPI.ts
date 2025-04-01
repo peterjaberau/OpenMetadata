@@ -48,6 +48,13 @@ export const getTableVersions = async (id: string) => {
   const url = `${BASE_URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getTableVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -56,6 +63,13 @@ export const getTableVersion = async (id: string, version: string) => {
   const url = `${BASE_URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get(url);
+  console.log('getTableVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -70,6 +84,13 @@ export const getTableDetailsByFQN = async (
       params: { ...params, include: params?.include ?? Include.All },
     }
   );
+  console.log('getTableDetailsByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -125,6 +146,13 @@ export const getTableProfilerConfig = async (tableId: string) => {
   const response = await APIClient.get<Table>(
     `${BASE_URL}/${tableId}/tableProfilerConfig`
   );
+  console.log('getTableProfilerConfig', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -157,6 +185,13 @@ export const getTableProfilesList = async (
   const response = await APIClient.get<PagingResponse<TableProfile[]>>(url, {
     params,
   });
+  console.log('getTableProfilesList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -172,6 +207,13 @@ export const getSystemProfileList = async (
 
   const response = await APIClient.get<PagingResponse<SystemProfile[]>>(url, {
     params,
+  });
+  console.log('getSystemProfileList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
   });
 
   return response.data;
@@ -193,12 +235,26 @@ export const getColumnProfilerList = async (
     data: ColumnProfile[];
     paging: Paging;
   }>(url, { params });
+  console.log('getColumnProfilerList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
 
 export const getSampleDataByTableId = async (id: string) => {
   const response = await APIClient.get<Table>(`${BASE_URL}/${id}/sampleData`);
+  console.log('getSampleDataByTableId', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -208,6 +264,13 @@ export const getLatestTableProfileByFqn = async (fqn: string) => {
   const response = await APIClient.get<Table>(
     `${BASE_URL}/${encodedFQN}/tableProfile/latest`
   );
+  console.log('getLatestTableProfileByFqn', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -215,6 +278,13 @@ export const getLatestTableProfileByFqn = async (fqn: string) => {
 export const getTableList = async (params?: TableListParams) => {
   const response = await APIClient.get<PagingResponse<Table[]>>(BASE_URL, {
     params,
+  });
+  console.log('getTableList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
   });
 
   return response.data;

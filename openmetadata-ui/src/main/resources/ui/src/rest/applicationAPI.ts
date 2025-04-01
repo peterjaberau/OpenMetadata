@@ -36,6 +36,12 @@ export const getApplicationList = async (params?: AppListParams) => {
     params,
   });
 
+  console.log('getApplicationList', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
+
   return response.data;
 };
 
@@ -56,6 +62,12 @@ export const getApplicationByName = async (
     }
   );
 
+  console.log('getApplicationByName', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
+
   return response.data;
 };
 
@@ -69,6 +81,12 @@ export const getApplicationRuns = async (
       params,
     }
   );
+
+  console.log('getApplicationRuns', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -84,6 +102,12 @@ export const getExternalApplicationRuns = async (
     }
   );
 
+  console.log('getExternalApplicationRuns', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
+
   return response.data;
 };
 
@@ -91,6 +115,12 @@ export const getLatestApplicationRuns = async (appName: string) => {
   const response = await APIClient.get<DataInsightLatestRun>(
     `${BASE_URL}/name/${getEncodedFqn(appName)}/logs`
   );
+
+  console.log('getLatestApplicationRuns', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -106,6 +136,12 @@ export const patchApplication = async (id: string, patch: Operation[]) => {
     `${BASE_URL}/${id}`,
     patch
   );
+
+  console.log('patchApplication', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -137,6 +173,11 @@ export const restoreApp = async (id: string) => {
     { id }
   );
 
+  console.log('restoreApp', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
   return response.data;
 };
 

@@ -69,6 +69,12 @@ export const getSettingsByType = async (
     `/system/settings/${settingType}`
   );
 
+  console.log('getSettingsByType', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
+
   return response.data.config_value as SearchSettings | LineageSettings;
 };
 

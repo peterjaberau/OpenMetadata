@@ -42,6 +42,15 @@ export const getListTestCaseIncidentStatus = async ({
     params: { ...params, limit },
   });
 
+
+  console.log('getListTestCaseIncidentStatus', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return response.data;
 };
 

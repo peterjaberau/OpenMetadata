@@ -35,6 +35,13 @@ export const getDataModelByFqn = async (fqn: string, params?: ListParams) => {
       },
     }
   );
+  console.log('getDataModelByFqn', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -74,6 +81,13 @@ export const getDataModelVersionsList = async (id: string) => {
   const url = `${URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getDataModelVersionsList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -82,6 +96,13 @@ export const getDataModelVersion = async (id: string, version: string) => {
   const url = `${URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get<DashboardDataModel>(url);
+  console.log('getDataModelVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

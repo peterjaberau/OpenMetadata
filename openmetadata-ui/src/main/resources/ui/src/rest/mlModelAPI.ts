@@ -32,6 +32,13 @@ export const getMlModelVersions = async (id: string) => {
   const url = `${BASE_URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getMlModelVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -40,6 +47,13 @@ export const getMlModelVersion = async (id: string, version: string) => {
   const url = `${BASE_URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get<Mlmodel>(url);
+  console.log('getMlModelVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -51,6 +65,13 @@ export const getMlModelByFQN = async (fqn: string, params?: ListParams) => {
       params: { ...params, include: params?.include ?? Include.All },
     }
   );
+  console.log('getMlModelByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

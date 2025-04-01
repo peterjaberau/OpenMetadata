@@ -25,6 +25,15 @@ import APIClient from './index';
 export const updateLineageEdge = async (edge: AddLineage) => {
   const response = await APIClient.put<AddLineage>(`/lineage`, edge);
 
+  console.log('updateLineageEdge', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
+
   return response.data;
 };
 
@@ -48,6 +57,15 @@ export const exportLineageAsync = async (
       },
     }
   );
+
+  console.log('exportLineageAsync', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
 
   return response.data;
 };
@@ -84,6 +102,15 @@ export const getLineageDataByFQN = async ({
     },
   });
 
+
+  console.log('getLineageDataByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return response.data;
 };
 
@@ -110,6 +137,15 @@ export const getPlatformLineage = async ({
     },
   });
 
+
+  console.log('getPlatformLineage', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return response.data;
 };
 
@@ -130,6 +166,15 @@ export const getDataQualityLineage = async (
       },
     }
   );
+
+
+  console.log('getDataQualityLineage', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };

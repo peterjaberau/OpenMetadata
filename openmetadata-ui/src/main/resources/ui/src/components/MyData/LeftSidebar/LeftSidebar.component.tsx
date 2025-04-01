@@ -19,6 +19,8 @@ import { noop } from 'lodash';
 import React, { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { ReactComponent as PlusOutlined } from '../../../assets/svg/plus-outlined.svg';
+
 import {
   LOGOUT_ITEM,
   SETTING_ITEM,
@@ -56,6 +58,14 @@ const LeftSidebar = ({
     () => filterHiddenNavigationItems(navigation),
     [navigation]
   );
+
+  const sideBarCustomItem: any = {
+    key: '/lineage-custom',
+    title: 'Lineage Custom',
+    redirect_url: '/lineage-custom',
+    dataTestId: 'app-bar-item-lineage-custom',
+  };
+
 
   const selectedKeys = useMemo(() => {
     const pathArray = location.pathname.split('/');
@@ -101,6 +111,12 @@ const LeftSidebar = ({
           }),
         };
       }),
+      {
+        key: sideBarCustomItem.key,
+        icon: <Icon component={PlusOutlined} />,
+        label: <LeftSidebarItem data={sideBarCustomItem} />,
+        onClick: noop,
+      },
       {
         type: 'divider',
         style: {

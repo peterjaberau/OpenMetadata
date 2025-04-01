@@ -30,6 +30,13 @@ export const getAllKnowledgePanels = async (params: {
       params,
     }
   );
+  console.log('getAllKnowledgePanels', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -38,6 +45,13 @@ export const getDocumentByFQN = async (fqn: string) => {
   const response = await axiosClient.get<Document>(
     `${BASE_URL}/name/${getEncodedFqn(fqn)}`
   );
+  console.log('getDocumentByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

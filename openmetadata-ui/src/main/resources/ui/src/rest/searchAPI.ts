@@ -232,6 +232,14 @@ export const searchQuery = async <
 > => {
   const res = await rawSearchQuery(req);
 
+
+  console.log('searchQuery', {
+    request: {
+
+    },
+    response: res,
+    data: formatSearchQueryResponse(res.data)
+  });
   return formatSearchQueryResponse(res.data);
 };
 
@@ -241,6 +249,15 @@ export const searchPreview = async (payload: PreviewSearchRequest) => {
     payload
   );
 
+
+
+  console.log('searchPreview', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
   return response.data;
 };
 
@@ -260,11 +277,27 @@ export const nlqSearch = async (payload: SearchRequest<SearchIndex>) => {
     }
   );
 
+  console.log('nlqSearch', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return formatSearchQueryResponse(response.data);
 };
 
 export const getNLPEnabledStatus = async () => {
   const response = await APIClient.get<boolean>('/system/search/nlq');
+
+  console.log('getNLPEnabledStatus', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };

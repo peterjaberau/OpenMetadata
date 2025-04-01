@@ -43,6 +43,15 @@ export const getApiEndPoints = async (params: GetApiEndPointsType) => {
     }
   );
 
+  console.log('getApiEndPoints', {
+    request: {
+      params,
+    },
+    response: response,
+    data: response.data,
+  });
+
+
   return response.data;
 };
 
@@ -57,6 +66,17 @@ export const getApiEndPointByFQN = async (fqn: string, params?: ListParams) => {
     }
   );
 
+  console.log('getApiEndPointByFQN', {
+    request: {
+      params,
+      fqn,
+
+    },
+    response: response,
+    data: response.data
+  });
+
+
   return response.data;
 };
 
@@ -65,6 +85,16 @@ export const patchApiEndPoint = async (id: string, data: Operation[]) => {
     Operation[],
     AxiosResponse<APIEndpoint>
   >(`/apiEndpoints/${id}`, data);
+
+  console.log('patchApiEndPoint', {
+    request: {
+      id, data
+
+    },
+    response: response,
+    data: response.data
+  });
+
 
   return response.data;
 };
@@ -75,6 +105,16 @@ export const restoreApiEndPoint = async (id: string) => {
     AxiosResponse<APIEndpoint>
   >(`/apiEndpoints/restore`, { id });
 
+  console.log('restoreApiEndPoint', {
+    request: {
+      id
+
+    },
+    response: response,
+    data: response.data
+  });
+
+
   return response.data;
 };
 
@@ -82,6 +122,15 @@ export const getApiEndPointVersions = async (id: string) => {
   const url = `/apiEndpoints/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+
+  console.log('getApiEndPointVersions', {
+    request: {
+      id
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -91,6 +140,16 @@ export const getApiEndPointVersion = async (id: string, version: string) => {
 
   const response = await APIClient.get<APIEndpoint>(url);
 
+  console.log('getApiEndPointVersion', {
+    request: {
+      id,
+      version
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return response.data;
 };
 
@@ -99,6 +158,14 @@ export const updateApiEndPointVote = async (id: string, data: VoteType) => {
     `/apiEndpoints/${id}/vote`,
     data
   );
+
+  console.log('updateApiEndPointVote', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
 
   return response.data;
 };
@@ -115,6 +182,14 @@ export const addApiEndpointFollower = async (id: string, userId: string) => {
     APPLICATION_JSON_CONTENT_TYPE_HEADER
   );
 
+  console.log('addApiEndpointFollower', {
+    request: {
+
+    },
+    response: response,
+    data: response.data
+  });
+
   return response.data;
 };
 
@@ -128,6 +203,14 @@ export const removeApiEndpointFollower = async (id: string, userId: string) => {
     `/apiEndpoints/${id}/followers/${userId}`,
     APPLICATION_JSON_CONTENT_TYPE_HEADER
   );
+
+
+  console.log('removeApiEndpointFollower', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
+
 
   return response.data;
 };

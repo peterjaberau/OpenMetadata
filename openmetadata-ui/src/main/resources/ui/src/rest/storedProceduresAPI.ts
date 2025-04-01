@@ -41,6 +41,13 @@ export const getStoredProceduresList = async (
   const response = await APIClient.get<PagingResponse<ServicePageData[]>>(URL, {
     params,
   });
+  console.log('getStoredProceduresList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -58,6 +65,13 @@ export const getStoredProceduresByFqn = async (
       },
     }
   );
+  console.log('getStoredProceduresByFqn', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -106,6 +120,13 @@ export const getStoredProceduresVersionsList = async (id: string) => {
   const url = `${URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getStoredProceduresVersionsList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -117,6 +138,13 @@ export const getStoredProceduresVersion = async (
   const url = `${URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get<StoredProcedure>(url);
+  console.log('getStoredProceduresVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

@@ -28,4 +28,5 @@ export enum SidebarItem {
   LOGOUT = 'logout',
   METRICS = 'metrics',
   LINEAGE = 'lineage',
+  LINEAGE_CUSTOM = 'lineage-custom',
 }

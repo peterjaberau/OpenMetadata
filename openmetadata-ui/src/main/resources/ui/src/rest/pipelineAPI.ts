@@ -33,6 +33,13 @@ export const getPipelineVersions = async (id: string) => {
   const url = `${BASE_URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getPipelineVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -40,6 +47,13 @@ export const getPipelineVersion = async (id: string, version: string) => {
   const url = `${BASE_URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get<Pipeline>(url);
+  console.log('getPipelineVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -61,6 +75,13 @@ export const getPipelines = async (
       include,
     },
   });
+  console.log('getPipelines', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -72,6 +93,13 @@ export const getPipelineByFqn = async (fqn: string, params?: ListParams) => {
       params: { ...params, include: params?.include ?? Include.All },
     }
   );
+  console.log('getPipelineByFqn', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -124,6 +152,13 @@ export const getPipelineStatus = async (
     url,
     { params }
   );
+  console.log('getPipelineStatus', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

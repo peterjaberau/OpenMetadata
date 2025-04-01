@@ -25,6 +25,14 @@ export const getMarketPlaceApplicationList = async (params?: ListParams) => {
     params,
   });
 
+  console.log('getMarketPlaceApplicationList', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
   return response.data;
 };
 

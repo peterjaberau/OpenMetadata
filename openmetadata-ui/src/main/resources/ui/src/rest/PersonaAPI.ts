@@ -32,6 +32,13 @@ export const getAllPersonas = async (params: GetPersonasParams) => {
   const response = await axiosClient.get<PagingResponse<Persona[]>>(BASE_URL, {
     params,
   });
+  console.log('getAllPersonas', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -45,6 +52,13 @@ export const getPersonaByName = async (fqn: string, fields?: string) => {
       },
     }
   );
+  console.log('getPersonaByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

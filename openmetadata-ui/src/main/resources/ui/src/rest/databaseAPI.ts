@@ -45,6 +45,15 @@ export const getDatabases = async (
     },
   });
 
+  console.log('getDatabases', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
+
   return response.data;
 };
 
@@ -61,6 +70,15 @@ export const getDatabaseDetailsByFQN = async (
       },
     }
   );
+
+  console.log('getDatabaseDetailsByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
 
   return response.data;
 };
@@ -127,6 +145,15 @@ export const getDatabaseSchemaDetailsByFQN = async (
     }
   );
 
+  console.log('getDatabaseSchemas', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
+
   return response.data;
 };
 
@@ -157,6 +184,15 @@ export const getDatabaseVersions = async (id: string) => {
 
   const response = await APIClient.get<EntityHistory>(url);
 
+  console.log('getDatabaseVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
+
   return response.data;
 };
 
@@ -165,6 +201,15 @@ export const getDatabaseVersionData = async (id: string, version: string) => {
 
   const response = await APIClient.get<Database>(url);
 
+  console.log('getDatabaseVersionData', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
+
   return response.data;
 };
 
@@ -172,6 +217,15 @@ export const getDatabaseSchemaVersions = async (id: string) => {
   const url = `/databaseSchemas/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+
+  console.log('getDatabaseSchemaVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
 
   return response.data;
 };
@@ -183,6 +237,15 @@ export const getDatabaseSchemaVersionData = async (
   const url = `/databaseSchemas/${id}/versions/${version}`;
 
   const response = await APIClient.get<DatabaseSchema>(url);
+
+  console.log('getDatabaseSchemaVersionData', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
 
   return response.data;
 };
@@ -213,6 +276,15 @@ export const getDatabaseProfilerConfig = async (databaseId: string) => {
     `/databases/${databaseId}/databaseProfilerConfig`
   );
 
+  console.log('getDatabaseProfilerConfig', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
+
   return response.data['databaseProfilerConfig'];
 };
 
@@ -234,6 +306,15 @@ export const getDatabaseSchemaProfilerConfig = async (
   const response = await APIClient.get<DatabaseSchema>(
     `/databaseSchemas/${databaseSchemaId}/databaseSchemaProfilerConfig`
   );
+
+  console.log('getDatabaseSchemaProfilerConfig', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
 
   return response.data['databaseSchemaProfilerConfig'];
 };

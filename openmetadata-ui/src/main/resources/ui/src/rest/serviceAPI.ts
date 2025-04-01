@@ -55,6 +55,13 @@ export const getServices = async ({
   };
 
   const response = await APIClient.get<ServiceResponse>(url, { params });
+  console.log('getServices', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -68,6 +75,13 @@ export const getServiceByFQN = async (
     `/services/${serviceCat}/name/${getEncodedFqn(fqn)}`,
     { params: { ...params, include: params?.include ?? Include.NonDeleted } }
   );
+  console.log('getServiceByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -81,6 +95,13 @@ export const getDomainSupportedServiceByFQN = async (
     `/services/${serviceCat}/name/${getEncodedFqn(fqn)}`,
     { params }
   );
+  console.log('getDomainSupportedServiceByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -130,6 +151,13 @@ export const getServiceVersions = async (
   const url = `/services/${serviceCategory}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getServiceVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -142,6 +170,13 @@ export const getServiceVersionData = async (
   const url = `/services/${serviceCategory}/${id}/versions/${version}`;
 
   const response = await APIClient.get<ServicesType>(url);
+  console.log('getServiceVersionData', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -171,6 +206,13 @@ export const searchService = async ({
     searchIndex,
     deleted
   );
+  console.log('searchService', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

@@ -72,6 +72,13 @@ export const getAllAlerts = async (params: ListParams) => {
       },
     }
   );
+  console.log('getAllAlerts', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -110,6 +117,13 @@ export const getFilterFunctions = async () => {
   const response = await axiosClient.get<Function[]>(
     `${BASE_URL}/observability/functions`
   );
+  console.log('getFilterFunctions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -118,6 +132,13 @@ export const getResourceFunctions = async () => {
   const response = await axiosClient.get<
     PagingResponse<FilterResourceDescriptor[]>
   >(`${BASE_URL}/observability/resources`);
+  console.log('getResourceFunctions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -140,6 +161,13 @@ export const getAlertEventsDiagnosticsInfo = async ({
       },
     }
   );
+  console.log('getAlertEventsDiagnosticsInfo', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

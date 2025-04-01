@@ -45,6 +45,13 @@ export const getSearchIndexes = async (args: {
       },
     }
   );
+  console.log('getPersonaByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -57,6 +64,13 @@ export const getSearchIndexDetailsByFQN = async (
     `/searchIndexes/name/${getEncodedFqn(fqn)}`,
     { params: { ...params, include: params?.include ?? Include.All } }
   );
+  console.log('getSearchIndexDetailsByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -115,6 +129,13 @@ export const getSampleDataBySearchIndexId = async (id: string) => {
   const response = await APIClient.get<SearchIndex>(
     `/searchIndexes/${id}/sampleData`
   );
+  console.log('getSampleDataBySearchIndexId', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -132,6 +153,13 @@ export const getSearchIndexVersions = async (id: string) => {
   const url = `/searchIndexes/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getSearchIndexVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -140,6 +168,13 @@ export const getSearchIndexVersion = async (id: string, version: string) => {
   const url = `/searchIndexes/${id}/versions/${version}`;
 
   const response = await APIClient.get<SearchIndex>(url);
+  console.log('getSearchIndexVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

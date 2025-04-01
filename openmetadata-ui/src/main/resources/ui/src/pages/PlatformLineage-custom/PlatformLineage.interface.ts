@@ -10,36 +10,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-@import (reference) url('../../styles/variables.less');
-
-.platform-lineage-container {
-  .lineage-card {
-    height: calc(100vh);
-  }
-
-  .full-screen-lineage {
-    .lineage-card {
-      height: calc(100vh);
-    }
-
-    .lineage-container {
-      height: calc(100vh);
-    }
-  }
-}
-
-.platform-lineage-container-custom {
-  .lineage-card {
-    height: calc(100vh);
-  }
-
-  .full-screen-lineage {
-    .lineage-card {
-      height: calc(100vh);
-    }
-
-    .lineage-container {
-      height: calc(100vh);
-    }
-  }
+export enum LineagePlatformView {
+  Service = 'service',
+  Domain = 'domain',
 }

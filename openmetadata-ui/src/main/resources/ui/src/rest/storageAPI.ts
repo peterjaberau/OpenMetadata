@@ -45,6 +45,13 @@ export const getContainers = async (args: {
       ...paging,
     },
   });
+  console.log('getContainers', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -59,6 +66,13 @@ export const getContainerByName = async (name: string, params?: ListParams) => {
       },
     }
   );
+  console.log('getContainerByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -73,6 +87,13 @@ export const getContainerChildrenByName = async (
       params,
     }
   );
+  console.log('getContainerChildrenByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -128,6 +149,13 @@ export const getContainerVersions = async (id: string) => {
   const url = `${BASE_URL}/${id}/versions`;
 
   const response = await APIClient.get<EntityHistory>(url);
+  console.log('getContainerVersions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -136,6 +164,13 @@ export const getContainerVersion = async (id: string, version: string) => {
   const url = `${BASE_URL}/${id}/versions/${version}`;
 
   const response = await APIClient.get<Container>(url);
+  console.log('getContainerVersion', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -147,6 +182,13 @@ export const getContainerByFQN = async (fqn: string, params?: ListParams) => {
       params: { ...params, include: params?.include ?? Include.All },
     }
   );
+  console.log('getContainerByFQN', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };

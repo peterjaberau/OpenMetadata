@@ -62,6 +62,12 @@ export const fetchAuthenticationConfig = async () => {
     '/system/config/auth'
   );
 
+  console.log('fetchAuthenticationConfig', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
+
   return response.data;
 };
 
@@ -70,11 +76,28 @@ export const fetchAuthorizerConfig = async () => {
     '/system/config/authorizer'
   );
 
+  console.log('fetchAuthorizerConfig', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
+
+  console.log('fetchAuthorizerConfig', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
   return response.data;
 };
 
 export const getVersion = async () => {
   const response = await APIClient.get<{ version: string }>('/system/version');
+
+  console.log('getVersion', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
 
   return response.data;
 };
@@ -82,10 +105,24 @@ export const getVersion = async () => {
 export const postSamlLogout = async () => {
   const response = await APIClient.get(`/saml/logout`);
 
+  console.log('postSamlLogout', {
+    request: {},
+    response: response,
+    data: response.data,
+  });
+
   return response.data;
 };
 
 export const addLineage = (data: Edge): Promise<AxiosResponse> => {
+  console.log('addLineage', {
+    request: {
+      data,
+    },
+    response: {},
+    data: {},
+  });
+
   return APIClient.put(`/lineage`, data);
 };
 
@@ -105,7 +142,7 @@ export const getUserAndTeamSearch = (
   userOnly = false,
   size = PAGE_SIZE
 ) => {
-  return searchData(
+  const response = searchData(
     term ?? '',
     1,
     size,
@@ -114,6 +151,14 @@ export const getUserAndTeamSearch = (
     '',
     userOnly ? SearchIndex.USER : [SearchIndex.USER, SearchIndex.TEAM]
   );
+
+  console.log('getUserAndTeamSearch', {
+    request: {},
+    response: response,
+    data: response,
+  });
+
+  return response;
 };
 
 export const deleteEntity = async (
@@ -150,6 +195,12 @@ export const deleteAsyncEntity = async (
     }
   );
 
+  console.log('deleteAsyncEntity', {
+    request: {},
+    response: response,
+    data: response,
+  });
+
   return response.data;
 };
 
@@ -179,12 +230,22 @@ export const getAggregateFieldOptions = (
     q,
   };
 
-  return APIClient.get<SearchResponse<ExploreSearchIndex>>(
-    `/search/aggregate`,
-    {
-      params,
-    }
+  const response = APIClient.get<SearchResponse<ExploreSearchIndex>>(
+      `/search/aggregate`,
+      {
+        params,
+      }
   );
+
+  console.log('getAggregateFieldOptions', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
+
+  return response
 };
 
 /**
@@ -227,6 +288,12 @@ export const getEntityCount = async (
 
   const response = await APIClient.get(`/${path}`, { params });
 
+  console.log('getEntityCount', {
+    request: {},
+    response: response,
+    data: response,
+  });
+
   return response.data;
 };
 
@@ -248,11 +315,23 @@ export const fetchMarkdownFile = async (filePath: string) => {
     },
   });
 
+  console.log('fetchMarkdownFile', {
+    request: {},
+    response: response,
+    data: response,
+  });
+
   return response.data;
 };
 
 export const fetchOMStatus = async () => {
   const response = await APIClient.get<ValidationResponse>('/system/status');
+
+  console.log('fetchOMStatus', {
+    request: {},
+    response: response,
+    data: response,
+  });
 
   return response.data;
 };

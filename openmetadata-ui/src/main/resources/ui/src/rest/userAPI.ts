@@ -42,6 +42,13 @@ export const getUsers = async (params: UsersQueryParams) => {
   const response = await APIClient.get<PagingResponse<User[]>>('/users', {
     params,
   });
+  console.log('getUsers', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -60,18 +67,39 @@ export const getUserByName = async (name: string, params?: ListParams) => {
     `/users/name/${getEncodedFqn(name)}`,
     { params }
   );
+  console.log('getUserByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
 
 export const getUserById = async (id: string, params?: ListParams) => {
   const response = await APIClient.get<User>(`/users/${id}`, { params });
+  console.log('getUserById', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
 
 export const getLoggedInUser = async (params?: ListParams) => {
   const response = await APIClient.get<User>('/users/loggedInUser', { params });
+  console.log('getLoggedInUser', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -107,6 +135,13 @@ export const getAuthMechanismForBotUser = async (botId: string) => {
   const response = await APIClient.get<AuthenticationMechanism>(
     `/users/auth-mechanism/${botId}`
   );
+  console.log('getAuthMechanismForBotUser', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -116,6 +151,13 @@ export const getBotByName = async (name: string, params?: ListParams) => {
     `/bots/name/${getEncodedFqn(name)}`,
     { params }
   );
+  console.log('getBotByName', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -142,6 +184,13 @@ export const getUserAccessToken = async () => {
   const response = await APIClient.get<{
     data: PersonalAccessToken[];
   }>('/users/security/token');
+  console.log('getUserAccessToken', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data.data;
 };

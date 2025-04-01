@@ -34,6 +34,13 @@ export const addIngestionPipeline = async (data: CreateIngestionPipeline) => {
     CreateIngestionPipeline,
     AxiosResponse<IngestionPipeline>
   >('/services/ingestionPipelines', data);
+  console.log('addIngestionPipeline', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -46,6 +53,13 @@ export const getIngestionPipelineByFqn = async (
     `/services/ingestionPipelines/name/${getEncodedFqn(fqn)}`,
     { params }
   );
+  console.log('getIngestionPipelineByFqn', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -86,6 +100,13 @@ export const getIngestionPipelines = async (data: {
     data: IngestionPipeline[];
     paging: Paging;
   }>(`/services/ingestionPipelines`, { params });
+  console.log('getIngestionPipelines', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -95,6 +116,13 @@ export const triggerIngestionPipelineById = async (id: string) => {
     unknown,
     AxiosResponse<IngestionPipeline>
   >(`/services/ingestionPipelines/trigger/${id}`);
+  console.log('triggerIngestionPipelineById', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -125,6 +153,13 @@ export const updateIngestionPipeline = async (
     Operation[],
     AxiosResponse<IngestionPipeline>
   >(`/services/ingestionPipelines/${id}`, data);
+  console.log('updateIngestionPipeline', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -133,6 +168,13 @@ export const getAirflowStatus = async () => {
   const response = await APIClient.get<PipelineServiceClientResponse>(
     '/services/ingestionPipelines/status'
   );
+  console.log('getAirflowStatus', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
@@ -172,6 +214,13 @@ export const getRunHistoryForPipeline = async (
       params,
     }
   );
+  console.log('getRunHistoryForPipeline', {
+    request: {
+
+    },
+    response: response,
+    data: {}
+  });
 
   return response.data;
 };
