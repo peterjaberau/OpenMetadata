@@ -16,7 +16,7 @@ to the OM API.
 
 import traceback
 from functools import singledispatchmethod
-from typing import Any, Dict, List, Optional, TypeVar, Union
+from typing import Any, Dict, Optional, TypeVar, Union
 
 from pydantic import BaseModel
 from requests.exceptions import HTTPError
@@ -99,7 +99,6 @@ from metadata.ingestion.models.pipeline_status import (
 )
 from metadata.ingestion.models.profile_data import OMetaTableProfileSampleData
 from metadata.ingestion.models.search_index_data import OMetaIndexSampleData
-from metadata.ingestion.models.table_metadata import ColumnTag
 from metadata.ingestion.models.tests_data import (
     OMetaLogicalTestSuiteSample,
     OMetaTestCaseResolutionStatus,
@@ -888,48 +887,6 @@ class MetadataRestSink(Sink):  # pylint: disable=too-many-public-methods
             return True
         return False
 
-    @singledispatchmethod
-    def _patch_entity_column_tags(self, entity, column_tags: List[ColumnTag]):
-        """
-        Generic dispatcher for patching column tags on any classifiable entity.
-        Uses singledispatchmethod for polymorphic dispatch based on entity type.
-
-        Args:
-            entity: The classifiable entity
-            column_tags: Column tags to patch
-
-        Returns:
-            bool: Success status
-
-        Raises:
-            NotImplementedError: If entity type is not supported
-        """
-        raise NotImplementedError(
-            f"Column tag patching not implemented for entity type {type(entity).__name__}"
-        )
-
-    @_patch_entity_column_tags.register
-    def _(self, entity: Table, column_tags: List[ColumnTag]) -> bool:
-        """Table-specific column tag patching implementation"""
-        patched = self.metadata.patch_column_tags(table=entity, column_tags=column_tags)
-        if patched:
-            logger.debug(
-                f"Successfully patched tags for {entity.fullyQualifiedName.root}"
-            )
-            return True
-        return False
-
-    @_patch_entity_column_tags.register
-    def _(self, entity: Container, column_tags: List[ColumnTag]) -> bool:
-        """Container-specific column tag patching implementation"""
-        patched = self.metadata.patch_column_tags(table=entity, column_tags=column_tags)
-        if patched:
-            logger.debug(
-                f"Successfully patched tags for {entity.fullyQualifiedName.root}"
-            )
-            return True
-        return False
-
     @_run_dispatch.register
     def write_sampler_response(
         self, record: SamplerResponse
@@ -958,19 +915,18 @@ class MetadataRestSink(Sink):  # pylint: disable=too-many-public-methods
                 )
 
         if record.column_tags:
-            try:
-                success = self._patch_entity_column_tags(
-                    entity, column_tags=record.column_tags
+            patched = self.metadata.patch_column_tags(
+                table=entity, column_tags=record.column_tags
+            )
+            if patched:
+                logger.debug(
+                    "Successfully patched tags for %s",
+                    entity.fullyQualifiedName.root,
                 )
-                if not success:
-                    self.status.warning(
-                        key=entity.fullyQualifiedName.root,
-                        reason="Error patching tags for entity",
-                    )
-            except NotImplementedError as exc:
+            else:
                 self.status.warning(
                     key=entity.fullyQualifiedName.root,
-                    reason=str(exc),
+                    reason="Error patching tags for entity",
                 )
 
         return Either(right=record.entity)

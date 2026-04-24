@@ -15,8 +15,7 @@ import traceback
 from abc import ABC, abstractmethod
 from typing import Any, List, Optional, Sequence, Type, TypeVar, cast, final
 
-from metadata.generated.schema.entity.data.container import Container
-from metadata.generated.schema.entity.data.table import Column, Table
+from metadata.generated.schema.entity.data.table import Column
 from metadata.generated.schema.entity.services.ingestionPipelines.status import (
     StackTraceError,
 )
@@ -91,12 +90,10 @@ class AutoClassificationProcessor(Processor, ABC):
 
     @staticmethod
     def _get_entity_columns(entity) -> Optional[List[Column]]:
-        """Get columns from a classifiable entity"""
-        if isinstance(entity, Table):
-            return entity.columns
-        if isinstance(entity, Container):
-            return entity.dataModel.columns if entity.dataModel else None
-        return None
+        from metadata.sampler.entity_adapters import adapter_for
+
+        adapter = adapter_for(entity)
+        return adapter.get_columns(entity) if adapter else None
 
     @final
     def _run(self, record: SamplerResponse) -> Either[SamplerResponse]:
